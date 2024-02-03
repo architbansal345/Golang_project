@@ -1,7 +1,13 @@
 package main
 
-import "fmt"
+import (
+	"net/http"
+
+	"github.com/a-h/templ"
+)
 
 func main() {
-	fmt.Printf("Helllo")
+	component := button()
+	http.Handle("/", templ.Handler(component))
+	http.ListenAndServe(":3000", nil)
 }
